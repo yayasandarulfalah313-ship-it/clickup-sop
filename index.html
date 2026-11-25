@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickup SOP - Yayasan Darul Falah</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Library untuk Export PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>Clickup SOP</h1>
+        <p>Sistem Pembuat Standar Operasional Prosedur Digital</p>
+        <p class="institution">Yayasan Darul Falah Pondok Pesantren DDI Mattoanging Bantaeng</p>
+    </header>
+
+    <main class="container">
+        <!-- AREA INPUT -->
+        <section class="input-section card">
+            <h2>Buat SOP Baru</h2>
+            <div class="input-group">
+                <label for="sopName">Nama / Judul SOP:</label>
+                <input type="text" id="sopName" placeholder="Contoh: Kegiatan Belajar Mengajar, Perpustakaan, Piket...">
+                <button id="btnGenerate" onclick="generateSOP()">Generate SOP</button>
+            </div>
+            <p class="hint">💡 <strong>Tips:</strong> Coba ketik "KBM", "Perpustakaan", "Disiplin", atau "Piket" untuk melihat auto-fill otomatis.</p>
+        </section>
+
+        <!-- AREA PREVIEW & EDIT -->
+        <section class="preview-section card" id="previewSection" style="display: none;">
+            <div class="action-buttons">
+                <button class="btn-pdf" onclick="exportPDF()">📥 Download PDF</button>
+                <button class="btn-word" onclick="exportWord()">📥 Download Word</button>
+            </div>
+
+            <!-- Konten di dalam div ini yang akan di-export -->
+            <div id="sop-preview" class="sop-document">
+                <!-- Header Dokumen -->
+                <div class="doc-header">
+                    <div class="logo-placeholder">LOGO</div>
+                    <div class="header-text">
+                        <h3>YAYASAN DARUL FALAH</h3>
+                        <h2>PONDOK PESANTREN DDI MATTOANGING</h2>
+                        <p>Jl. Poros Bantaeng-Bulukumba, Mattoanging, Bantaeng, Sulawesi Selatan</p>
+                    </div>
+                </div>
+                <hr class="header-line">
+                <h2 class="doc-title">STANDAR OPERASIONAL PROSEDUR (SOP)</h2>
+
+                <!-- Tabel Identitas -->
+                <table class="identity-table" id="identityTable">
+                    <!-- Diisi oleh JS -->
+                </table>
+
+                <!-- Komponen SOP -->
+                <div class="sop-body">
+                    <h4>1. TUJUAN</h4>
+                    <div class="editable" id="tujuan" contenteditable="true"></div>
+
+                    <h4>2. RUANG LINGKUP</h4>
+                    <div class="editable" id="ruangLingkup" contenteditable="true"></div>
+
+                    <h4>3. DEFINISI OPERASIONAL</h4>
+                    <div class="editable" id="definisi" contenteditable="true"></div>
+
+                    <h4>4. DASAR HUKUM / REFERENSI</h4>
+                    <div class="editable" id="dasarHukum" contenteditable="true"></div>
+
+                    <h4>5. PROSEDUR / LANGKAH-LANGKAH KERJA</h4>
+                    <table class="procedure-table" id="procedureTable">
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th width="45%">Uraian Kegiatan</th>
+                                <th width="20%">Pelaksana</th>
+                                <th width="15%">Waktu</th>
+                                <th width="15%">Output</th>
+                            </tr>
+                        </thead>
+                        <tbody id="procedureBody">
+                            <!-- Diisi oleh JS -->
+                        </tbody>
+                    </table>
+
+                    <h4>6. DOKUMEN TERKAIT</h4>
+                    <div class="editable" id="dokumenTerkait" contenteditable="true"></div>
+                </div>
+
+                <!-- Tanda Tangan -->
+                <div class="signature-section">
+                    <div class="signature-box">
+                        <p>Ditetapkan di: Bantaeng</p>
+                        <p>Tanggal: <span id="tanggalHariIni"></span></p>
+                        <p>Ketua Yayasan Darul Falah,</p>
+                        <br><br><br>
+                        <p><strong><u>HUSNUL HULUK, S.Pd.I., M.Pd</u></strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Clickup SOP - Developed for Pondok Pesantren DDI Mattoanging</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
